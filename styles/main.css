@@ -1,0 +1,293 @@
+/* body {
+  background-image: url("../images/wallpaperMain.jpg");
+  background-position: center;
+  background-size: cover;
+} */
+
+.header {
+  width: 100%;
+  background-image: url("../images/wallpaperMain.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 15vh;
+  padding: 10px 5px;
+  position: relative;
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav {
+  width: 92%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.logo {
+  width: 5%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  width: 100%;
+  height: 80%;
+  cursor: pointer;
+}
+
+.Active {
+  color: orangered;
+  position: relative;
+}
+
+.Active::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: orangered;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 5%;
+  box-shadow: 0px 2px 4px orangered;
+}
+
+.clicked {
+  color: orangered;
+  position: relative;
+}
+
+.clicked::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: orangered;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 5%;
+  box-shadow: 0px 2px 4px orangered;
+}
+
+#form {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#form input {
+  height: 35px;
+  width: 50%;
+  border-radius: 5px;
+  border-color: rgb(8, 8, 204);
+  padding: 2%;
+}
+
+#form input:focus {
+  box-shadow: 0 0 10px orangered;
+  border: none;
+}
+
+.navigation {
+  width: 60%;
+  height: 10vh;
+  color: #fff;
+  font-size: large;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.navigation li {
+  cursor: pointer;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.navigation li:last-child {
+  margin-right: 0px;
+}
+
+.navigation li:active {
+  color: orangered;
+}
+
+.main {
+  width: 100%;
+  min-height: 90vh;
+  position: relative;
+  background-color: #f5ebe0;
+}
+
+.spinner {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.search {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.search img {
+  width: 35px;
+  height: 35px;
+}
+
+.container {
+  padding: 2% 4%;
+}
+
+.innerContainer {
+  padding: 2%;
+  border-radius: 10px;
+  margin-bottom: 2%;
+  min-height: 300px;
+}
+
+.innerContainer .type {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: xx-large;
+  letter-spacing: 3px;
+  text-shadow: 0 0 2px black, 0 0 7px black;
+}
+
+.row {
+  width: 100%;
+  height: 520px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2%;
+  transition: transform 1s, opacity 1s;
+}
+
+.row .animeCard {
+  width: 19%;
+  height: 100%;
+  box-shadow: 0 0 5px #fff;
+  border-radius: 5px;
+  margin-right: 1.25%;
+  background-color: #d3c0abce;
+}
+
+.row .animeCard:last-child {
+  margin-right: 0;
+}
+
+.animeCard img {
+  width: 100%;
+  height: 75%;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.animeCard .anime {
+  width: 100%;
+  height: 25%;
+  padding: 5%;
+}
+
+.animeInfo {
+  height: 65%;
+  margin-bottom: 2%;
+  overflow-y: scroll;
+}
+
+.animeCardTitle {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+}
+
+.animeInfo::-webkit-scrollbar {
+  width: 16px;
+  background: transparent;
+}
+
+.animeInfo::-webkit-scrollbar-track {
+  display: none;
+}
+
+.animeInfo::-webkit-scrollbar-thumb {
+  height: 1em;
+  border: 4px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  border-radius: 1em;
+  background-color: rgb(25, 24, 24);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.025);
+}
+
+.animeCard .anime .animeBtn {
+  padding: 4% 5%;
+  border-radius: 5px;
+  border: none;
+  background-color: orangered;
+  color: #fff;
+  cursor: pointer;
+}
+
+.animeCard .anime .animeBtn:hover {
+  background-color: #fff;
+  border: 1px solid orangered;
+  color: orangered;
+}
+
+.empty {
+  padding: 10% 15%;
+  background-color: #f5ebe0b5;
+  border-radius: 5px;
+  text-align: center;
+  color: red;
+  font-size: x-large;
+  text-shadow: 0 0 1px black;
+}
+
+.animation {
+  opacity: 0;
+  transform: translateY(8rem);
+}
+
+#TV,
+#OVA,
+#Movie,
+#Special {
+  background-size: cover;
+  background-position: center;
+}
+
+#TV {
+  background-image: url("../images/Tv.jpg");
+}
+
+#OVA {
+  background-image: url("../images/OVA.jpg");
+}
+
+#Movie {
+  background-image: url("../images/Movie.jpg");
+}
+
+#Special {
+  background-image: url("../images/Special.jpg");
+}

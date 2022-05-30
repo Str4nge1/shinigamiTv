@@ -1,0 +1,125 @@
+body {
+  background-image: url("../images/wallpaper.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.main {
+  width: 100%;
+  height: 100vh;
+  padding: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.animeInfo {
+  width: 32%;
+  height: 100%;
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 10px 0px 0px 10px;
+  margin-right: 3px;
+  box-shadow: 0 0 20px rgb(41, 40, 40);
+}
+
+.innerContainer {
+  width: 100%;
+  height: 100%;
+  padding: 5%;
+  background-color: rgba(0, 0, 0, 0.664);
+  border-radius: 10px 0px 0px 10px;
+  overflow: overlay;
+}
+
+.overflowHidden {
+  overflow: hidden;
+}
+
+.overflowScrollY {
+  overflow-y: auto;
+}
+
+.innerContainer::-webkit-scrollbar {
+  width: 16px;
+  background: transparent;
+}
+
+.innerContainer::-webkit-scrollbar-track {
+  /* background: rgba(2, 2, 2, 0.64); */
+  display: none;
+}
+
+.innerContainer::-webkit-scrollbar-thumb {
+  height: 1em;
+  border: 4px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  border-radius: 1em;
+  background-color: rgb(25, 24, 24);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.025);
+}
+
+#player {
+  width: 68%;
+  height: 100%;
+  box-shadow: 0 0 20px rgb(41, 40, 40);
+  position: relative;
+}
+
+.spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bold {
+  font-size: large;
+  font-weight: bold;
+}
+
+.animeTitle {
+  text-align: center;
+  margin-bottom: 6%;
+  padding-bottom: 3%;
+  border-bottom: 2px solid #fff;
+}
+
+.animeInfo div {
+  margin-top: 2%;
+}
+
+.animeInfo div:first-child {
+  margin-top: 0;
+}
+
+.ep,
+.animeTitle,
+.themes,
+.year {
+  font-size: medium;
+  color: #01d5ff;
+  text-shadow: 0 0 1px #fff;
+}
+
+.animeInfo span {
+  color: #fff;
+}
+
+.noAnime {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5ebe09a;
+  color: red;
+  font-size: xx-large;
+  text-shadow: 0 0 1px black;
+}
