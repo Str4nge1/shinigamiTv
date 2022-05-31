@@ -7,7 +7,14 @@ class AnimeView {
 
   render(data) {
     this._clear();
-    let HTML = '<div class="container">';
+    let HTML = `
+      <div class="scrollUpContainer">
+        <div class="scrollUpInner"> 
+          <div class="scrollUp"> &#10595; </div>
+        </div>
+      </div>
+      <div class="container">
+    `;
     for (const [key, values] of Object.entries(data.search)) {
       HTML += ` 
       <div class="innerContainer" id="${key}">
@@ -20,10 +27,13 @@ class AnimeView {
       </div>
       `;
     }
-    HTML += "</div>";
+    HTML += `
+      </div>
+    `;
     this._parentElement.innerHTML = HTML;
 
     this._addIntersectionObserver();
+    this._addScrollUpBtnHandler();
   }
 
   _generate(values) {
@@ -70,6 +80,27 @@ class AnimeView {
       element.classList.add("animation");
     });
   }
+
+  _addScrollUpBtnHandler() {
+    const btn = document.querySelector(".scrollUp");
+    const scrollElement = document.querySelector(".header");
+    btn.addEventListener("click", function () {
+      scrollElement.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+
+  // _addSmoothScroll() {
+  //   const scrollBtnContainer = document.querySelector(".scrollTypes");
+  //   scrollBtnContainer.addEventListener("click", function (e) {
+  //     const scrollBtn = e.target.closest(".scrollType");
+  //     if (!scrollBtn) return;
+
+  //     const scrollToElement = document.getElementById(
+  //       `${scrollBtn.dataset.scrollto}`
+  //     );
+  //     scrollToElement.scrollIntoView({ behavior: "smooth" });
+  //   });
+  // }
 
   renderSpinner() {
     const markup = `

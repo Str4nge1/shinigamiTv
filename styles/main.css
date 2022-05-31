@@ -91,6 +91,7 @@
   border-radius: 5px;
   border-color: rgb(8, 8, 204);
   padding: 2%;
+  letter-spacing: 0.5px;
 }
 
 #form input:focus {
@@ -126,9 +127,9 @@
 
 .main {
   width: 100%;
-  min-height: 90vh;
+  min-height: 85vh;
   position: relative;
-  background-color: #f5ebe0;
+  background-color: #ebe9e6;
 }
 
 .spinner {
@@ -274,6 +275,7 @@
 #Special {
   background-size: cover;
   background-position: center;
+  scroll-margin: 20px;
 }
 
 #TV {
@@ -290,4 +292,70 @@
 
 #Special {
   background-image: url("../images/Special.jpg");
+}
+
+.scrollTypes {
+  width: 100%;
+  padding: 0% 2% 2% 2%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.scrollType {
+  cursor: pointer;
+  margin-right: 2%;
+  text-align: center;
+  font-size: medium;
+}
+
+.scrollType:last-child {
+  margin-right: 0%;
+}
+
+.scrollType:hover {
+  color: orangered;
+}
+
+.scroll {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 1%;
+}
+
+.scrollUpContainer {
+  width: 100%;
+  height: 85vh;
+  position: absolute;
+}
+
+.scrollUpInner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.scrollUp {
+  position: fixed;
+  font-size: xx-large;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  color: #fff;
+  background-color: green;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  left: 100%;
+  top: 100%;
+  transform: translate(-150%, -150%);
+}
+
+.scrollUp:hover {
+  color: green;
+  background-color: #fff;
+  border: 1px solid green;
 }

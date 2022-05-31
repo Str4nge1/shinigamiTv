@@ -59,9 +59,11 @@ function animeClickHandler(e) {
   const id = card.dataset.id;
 
   if (ytId === "null") {
-    window.location = `./anime.html?id=${id}&ytid=-1`;
+    window.open(`./anime.html?id=${id}&ytid=-1`);
+    // window.location = `./anime.html?id=${id}&ytid=-1`;
   } else {
-    window.location = `./anime.html?id=${id}&ytid=${ytId}`;
+    window.open(`./anime.html?id=${id}&ytid=${ytId}`);
+    // window.location = `./anime.html?id=${id}&ytid=${ytId}`;
   }
 }
 
