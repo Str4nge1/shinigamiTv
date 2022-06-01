@@ -5,6 +5,10 @@ class AnimeView {
     this._parentElement.addEventListener("click", handler);
   }
 
+  paginationHandler(handler) {
+    this._parentElement.addEventListener("click", handler);
+  }
+
   render(data) {
     this._clear();
     let HTML = `
@@ -22,12 +26,17 @@ class AnimeView {
         ${
           values.length !== 0
             ? this._generate(values)
-            : '<div class="row"><div class="empty"> There are no search results of this type 🙄 </div></div>'
+            : '<div class="row"><div class="empty"> There are no search results of this type on current page🙄 </div></div>'
         }
       </div>
       `;
     }
-    HTML += `
+    HTML += `<div class="pagination">
+      <div class="paginationInner">${this._renderPaginationButtons(
+        data.currentPage,
+        data.pages
+      )}</div>
+      </div>
       </div>
     `;
     this._parentElement.innerHTML = HTML;
@@ -110,6 +119,40 @@ class AnimeView {
 
     this._clear();
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
+  }
+
+  _renderPaginationButtons(currentPage, pages) {
+    console.log(currentPage, pages);
+    const nextBtnMarkup = `
+          <div class="paginationBtn nextBtn" data-goto="${
+            currentPage + 1
+          }" data-current="${currentPage}">
+            <span class="next">Page ${currentPage + 1}</span>
+            <span class="rArrow">&#8658;</span>
+          </div>
+          `;
+    const prevBtnMarkup = `
+          <div class="paginationBtn prevBtn" data-goto="${
+            currentPage - 1
+          }" data-current="${currentPage}">
+            <span class="lArrow">&#8656;</span>
+            <span class="prev">Page ${currentPage - 1}</span>
+          </div>
+    `;
+
+    if (currentPage === 1 && pages > 1) {
+      return nextBtnMarkup;
+    }
+
+    if (currentPage === pages && pages > 1) {
+      return prevBtnMarkup;
+    }
+
+    if (currentPage < pages) {
+      return `${prevBtnMarkup}${nextBtnMarkup}`;
+    }
+
+    return "";
   }
 
   _clear() {

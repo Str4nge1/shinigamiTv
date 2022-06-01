@@ -90,11 +90,29 @@ function navMouseClickHandler(e) {
   category.classList.add("clicked");
 }
 
+async function pagination(e) {
+  try {
+    const btn = e.target.closest(".paginationBtn");
+    if (!btn) return;
+
+    animeView.renderSpinner();
+    await model.getAnime(
+      model.state.searchName,
+      model.state.category,
+      +btn.dataset.goto
+    );
+    animeView.render(model.state);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 function init() {
   loadHandler();
   formSubmitHandler();
   categoryHandler();
   animeView.onClickHandler(animeClickHandler);
+  animeView.paginationHandler(pagination);
   navigationView.addMouseEnterHandler(navMouseEnterHandler);
   navigationView.addMouseleaveHandler(navMouseLeaveHandler);
   navigationView.addLogoClickHandler(logoClickHandler);
