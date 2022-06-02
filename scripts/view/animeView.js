@@ -31,14 +31,17 @@ class AnimeView {
       </div>
       `;
     }
-    HTML += `<div class="pagination">
-      <div class="paginationInner">${this._renderPaginationButtons(
-        data.currentPage,
-        data.pages
-      )}</div>
-      </div>
-      </div>
-    `;
+
+    this._renderPaginationButtons(data.currentPage, data.pages)
+      ? (HTML += `<div class="pagination">
+    <div class="paginationInner">${this._renderPaginationButtons(
+      data.currentPage,
+      data.pages
+    )}</div>
+    </div>
+    </div>
+  `)
+      : (HTML += `</div>`);
     this._parentElement.innerHTML = HTML;
 
     this._addIntersectionObserver();
