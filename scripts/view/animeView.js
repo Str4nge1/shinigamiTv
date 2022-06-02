@@ -101,19 +101,6 @@ class AnimeView {
     });
   }
 
-  // _addSmoothScroll() {
-  //   const scrollBtnContainer = document.querySelector(".scrollTypes");
-  //   scrollBtnContainer.addEventListener("click", function (e) {
-  //     const scrollBtn = e.target.closest(".scrollType");
-  //     if (!scrollBtn) return;
-
-  //     const scrollToElement = document.getElementById(
-  //       `${scrollBtn.dataset.scrollto}`
-  //     );
-  //     scrollToElement.scrollIntoView({ behavior: "smooth" });
-  //   });
-  // }
-
   renderSpinner() {
     const markup = `
         <div class="spinner">
