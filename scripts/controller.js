@@ -9,7 +9,11 @@ function categoryHandler() {
       if (!e.target.classList.contains("category")) return;
 
       animeView.renderSpinner();
-      await model.getAnime("", +e.target.dataset.category);
+      const category = +e.target.dataset.category;
+      const url = `./index.html?c=${category}`;
+      history.replaceState({}, "", url);
+
+      await model.getAnime("", category);
       animeView.render(model.state);
     } catch (error) {
       console.error(error);
@@ -20,8 +24,23 @@ function categoryHandler() {
 function loadHandler() {
   window.addEventListener("load", async function () {
     try {
+      const paramString = new URLSearchParams(
+        window.location.href.split("?")[1]
+      );
+
+      const category = paramString.get("c") ? paramString.get("c") : "";
+      const page = paramString.get("p") ? paramString.get("p") : 1;
+      const searchName = paramString.get("n") ? paramString.get("n") : "";
+
       animeView.renderSpinner();
-      await model.getAnime();
+      if (category) {
+        navigationView.findCategory(category);
+        await model.getAnime("", category, page);
+      } else if (searchName) {
+        await model.getAnime(searchName, category, page);
+      } else {
+        await model.getAnime("", 0, page);
+      }
       animeView.render(model.state);
     } catch (error) {
       console.error(error);
@@ -39,6 +58,8 @@ function formSubmitHandler() {
       if (!name) return;
 
       animeView.renderSpinner();
+      const url = `./index.html?n=${name}&p=1`;
+      history.replaceState({}, "", url);
       await model.getAnime(name);
       animeView.render(model.state);
 
@@ -75,11 +96,20 @@ function navMouseLeaveHandler(e) {
   e.target.classList.remove("Active");
 }
 
-function logoClickHandler(e) {
-  const logo = e.target.closest(".shinigamiLogo");
-  if (!logo) return;
+async function logoClickHandler(e) {
+  try {
+    const logo = e.target.closest(".shinigamiLogo");
+    if (!logo) return;
 
-  window.location.reload();
+    history.replaceState({}, "", "./index.html");
+    navigationView.initCategories();
+
+    animeView.renderSpinner();
+    await model.getAnime();
+    animeView.render(model.state);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function navMouseClickHandler(e) {
@@ -96,11 +126,23 @@ async function pagination(e) {
     if (!btn) return;
 
     animeView.renderSpinner();
-    await model.getAnime(
-      model.state.searchName,
-      model.state.category,
-      +btn.dataset.goto
-    );
+    const page = +btn.dataset.goto;
+
+    const paramString = new URLSearchParams(window.location.href.split("?")[1]);
+    const urlPage = paramString.get("p");
+    let url;
+    if (urlPage) {
+      url = `${window.location.href.split("p=")[0]}p=${page}`;
+    } else {
+      if (model.state.category == 0 && model.state.searchName == "") {
+        url = `${window.location.href}?p=${page}`;
+      } else {
+        url = `${window.location.href}&p=${page}`;
+      }
+    }
+
+    history.replaceState({}, "", url);
+    await model.getAnime(model.state.searchName, model.state.category, page);
     animeView.render(model.state);
   } catch (error) {
     console.error(error);
@@ -118,5 +160,4 @@ function init() {
   navigationView.addLogoClickHandler(logoClickHandler);
   navigationView.addNavigationClickHandler(navMouseClickHandler);
 }
-
 init();

@@ -125,7 +125,6 @@ class AnimeView {
   }
 
   _renderPaginationButtons(currentPage, pages) {
-    console.log(currentPage, pages);
     const nextBtnMarkup = `
           <div class="paginationBtn nextBtn" data-goto="${
             currentPage + 1

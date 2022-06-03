@@ -21,6 +21,19 @@ class NavigationView {
   addNavigationClickHandler(handler) {
     this._parentElement.addEventListener("click", handler.bind(this));
   }
+
+  initCategories() {
+    this._categories.forEach((category) =>
+      category.classList.remove("clicked")
+    );
+  }
+
+  findCategory(categoryNum) {
+    const activeCategory = Array.from(this._categories).filter(
+      (category) => category.dataset.category === categoryNum
+    );
+    activeCategory[0].classList.add("clicked");
+  }
 }
 
 export default new NavigationView();
