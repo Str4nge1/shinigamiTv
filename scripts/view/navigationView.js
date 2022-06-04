@@ -30,7 +30,7 @@ class NavigationView {
 
   findCategory(categoryNum) {
     const activeCategory = Array.from(this._categories).filter(
-      (category) => category.dataset.category === categoryNum
+      (cat) => +cat.dataset.category === categoryNum
     );
     activeCategory[0].classList.add("clicked");
   }

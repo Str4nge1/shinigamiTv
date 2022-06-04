@@ -60,6 +60,8 @@ function formSubmitHandler() {
       animeView.renderSpinner();
       const url = `./index.html?n=${name}&p=1`;
       history.replaceState({}, "", url);
+
+      navigationView.initCategories();
       await model.getAnime(name);
       animeView.render(model.state);
 
